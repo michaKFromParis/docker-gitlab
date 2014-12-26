@@ -12,6 +12,7 @@ SETUP_DIR="/app/setup"
 SYSCONF_TEMPLATES_DIR="${SETUP_DIR}/config"
 USERCONF_TEMPLATES_DIR="${GITLAB_DATA_DIR}/config"
 
+GITLAB_DEVELOPMENT_ENABLED=${GITLAB_DEVELOPMENT_ENABLED:-false}
 GITLAB_HOST=${GITLAB_HOST:-localhost}
 GITLAB_PORT=${GITLAB_PORT:-}
 GITLAB_SSH_HOST=${GITLAB_SSH_HOST:-$GITLAB_HOST}
@@ -352,6 +353,12 @@ if [ -f "${SSL_CERTIFICATE_PATH}" -o -f "${CA_CERTIFICATES_PATH}" ]; then
   [ -f "${SSL_CERTIFICATE_PATH}" ] && cp "${SSL_CERTIFICATE_PATH}" /usr/local/share/ca-certificates/gitlab.crt
   [ -f "${CA_CERTIFICATES_PATH}" ] && cp "${CA_CERTIFICATES_PATH}" /usr/local/share/ca-certificates/ca.crt
   update-ca-certificates --fresh >/dev/null 2>&1
+fi
+
+if [ $GITLAB_DEVELOPMENT_ENABLED = true ]; then
+  echo "Disabling Caching"
+  sudo -u git -H sed 's/config.cache_classes = true/config.cache_classes = false/' -i config/environments/production.rb
+  sudo -u git -H sed 's/config.action_controller.perform_caching = true/config.action_controller.perform_caching = false/' -i config/environments/production.rb
 fi
 
 # configure git for the 'git' user
