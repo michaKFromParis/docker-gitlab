@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-GITLAB_VERSION=7.6.1
-GITLAB_SHELL_VERSION=2.4.0
+GITLAB_VERSION=7.7.0
+GITLAB_SHELL_VERSION=2.4.1
 
 GITLAB_HOME="/home/git"
 GITLAB_INSTALL_DIR="${GITLAB_HOME}/gitlab"
@@ -142,7 +142,7 @@ ${GITLAB_LOG_DIR}/gitlab/*.log {
 EOF
 
 # configure gitlab-shell log rotation
-cat > /etc/logrotate.d/gitlab <<EOF
+cat > /etc/logrotate.d/gitlab-shell <<EOF
 ${GITLAB_LOG_DIR}/gitlab-shell/*.log {
   weekly
   missingok
@@ -155,7 +155,7 @@ ${GITLAB_LOG_DIR}/gitlab-shell/*.log {
 EOF
 
 # configure gitlab vhost log rotation
-cat > /etc/logrotate.d/gitlab <<EOF
+cat > /etc/logrotate.d/gitlab-nginx <<EOF
 ${GITLAB_LOG_DIR}/nginx/*.log {
   weekly
   missingok

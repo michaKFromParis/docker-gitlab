@@ -125,6 +125,12 @@ production: &base
       issues_url: "{{JIRA_URL}}/browse/:id"
       new_issue_url: "{{JIRA_URL}}/secure/CreateIssue.jspa"
 
+    mantis:
+      title: "Mantis"
+      project_url: "{{MANTIS_URL}}/set_project.php?project_id=:issues_tracker_id&ref=view_all_bug_page.php"
+      issues_url: "{{MANTIS_URL}}/view.php?id=:id"
+      new_issue_url: "{{MANTIS_URL}}/set_project.php?project_id=:issues_tracker_id&ref=bug_report_page.php"
+
   ## Gravatar
   ## For Libravatar see: http://doc.gitlab.com/ce/customization/libravatar.html
   gravatar:
@@ -287,7 +293,7 @@ production: &base
 
   extra:
     ## Google analytics. Uncomment if you want it
-    # google_analytics_id: '_your_tracking_id'
+    google_analytics_id: '{{GOOGLE_ANALYTICS_ID}}'
 
     ## Piwik analytics.
     piwik_url: '{{PIWIK_URL}}'
@@ -297,6 +303,20 @@ production: &base
     # sign_in_text: |
     #   ![Company Logo](http://www.companydomain.com/logo.png)
     #   [Learn more about CompanyName](http://www.companydomain.com/)
+
+  rack_attack:
+    git_basic_auth:
+      # Whitelist requests from 127.0.0.1 for web proxies (NGINX/Apache) with incorrect headers
+      # ip_whitelist: ["127.0.0.1"]
+      #
+      # Limit the number of Git HTTP authentication attempts per IP
+      # maxretry: 10
+      #
+      # Reset the auth attempt counter per IP after 60 seconds
+      # findtime: 60
+      #
+      # Ban an IP for one hour (3600s) after too many auth attempts
+      # bantime: 3600
 
 development:
   <<: *base

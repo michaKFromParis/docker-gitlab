@@ -1,5 +1,15 @@
 # Changelog
 
+**7.7.0**
+- init: added GOOGLE_ANALYTICS_ID configuration option
+- added support for mantis issue tracker
+- fixed log rotation configuration
+- gitlab-shell: upgrade to v.2.4.1
+- gitlab: upgrade to CE v.7.7.0
+
+**7.6.2**
+- gitlab: upgrade to CE v.7.6.2
+
 **7.6.1**
 - disable nginx ipv6 if host does not support it.
 - init: added GITLAB_BACKUP_TIME configuration option
