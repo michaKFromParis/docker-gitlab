@@ -84,9 +84,9 @@ GITLAB_EMAIL_ENABLED=${GITLAB_EMAIL_ENABLED:-$SMTP_ENABLED}
 
 LDAP_ENABLED=${LDAP_ENABLED:-false}
 LDAP_HOST=${LDAP_HOST:-}
-LDAP_PORT=${LDAP_PORT:-636}
+LDAP_PORT=${LDAP_PORT:-389}
 LDAP_UID=${LDAP_UID:-sAMAccountName}
-LDAP_METHOD=${LDAP_METHOD:-ssl}
+LDAP_METHOD=${LDAP_METHOD:-plain}
 LDAP_BIND_DN=${LDAP_BIND_DN:-}
 LDAP_PASS=${LDAP_PASS:-}
 LDAP_ACTIVE_DIRECTORY=${LDAP_ACTIVE_DIRECTORY:-true}
@@ -112,6 +112,9 @@ OAUTH_TWITTER_APP_SECRET=${OAUTH_TWITTER_APP_SECRET:-}
 
 OAUTH_GITHUB_API_KEY=${OAUTH_GITHUB_API_KEY:-}
 OAUTH_GITHUB_APP_SECRET=${OAUTH_GITHUB_APP_SECRET:-}
+
+OAUTH_GITLAB_API_KEY=${OAUTH_GITLAB_API_KEY:-}
+OAUTH_GITLAB_APP_SECRET=${OAUTH_GITLAB_APP_SECRET:-}
 
 GOOGLE_ANALYTICS_ID=${GOOGLE_ANALYTICS_ID:-}
 
@@ -578,6 +581,18 @@ else
   sudo -u git -H sed '/{{OAUTH_GITHUB_API_KEY}}/d' -i config/gitlab.yml
   sudo -u git -H sed '/{{OAUTH_GITHUB_APP_SECRET}}/d' -i config/gitlab.yml
   sudo -u git -H sed '/{{OAUTH_GITHUB_SCOPE}}/d' -i config/gitlab.yml
+fi
+
+# gitlab
+if [ -n "${OAUTH_GITLAB_API_KEY}" -a -n "${OAUTH_GITLAB_APP_SECRET}" ]; then
+  OAUTH_ENABLED=true
+  sudo -u git -H sed 's/{{OAUTH_GITLAB_API_KEY}}/'"${OAUTH_GITLAB_API_KEY}"'/' -i config/gitlab.yml
+  sudo -u git -H sed 's/{{OAUTH_GITLAB_APP_SECRET}}/'"${OAUTH_GITLAB_APP_SECRET}"'/' -i config/gitlab.yml
+  sudo -u git -H sed 's/{{OAUTH_GITLAB_SCOPE}}/api/' -i config/gitlab.yml
+else
+  sudo -u git -H sed '/{{OAUTH_GITLAB_API_KEY}}/d' -i config/gitlab.yml
+  sudo -u git -H sed '/{{OAUTH_GITLAB_APP_SECRET}}/d' -i config/gitlab.yml
+  sudo -u git -H sed '/{{OAUTH_GITLAB_SCOPE}}/d' -i config/gitlab.yml
 fi
 
 # google analytics
