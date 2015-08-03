@@ -1,5 +1,112 @@
 # Changelog
 
+This file only reflects the changes that are made in the the docker image. Please refer to the upstream GitLab [CHANGELOG](https://github.com/gitlabhq/gitlabhq/blob/master/CHANGELOG) for the list of changes in GitLab.
+
+**7.13.2**
+- gitlab: upgrade to CE v.7.13.2
+
+**7.13.1**
+- gitlab: upgrade to CE v.7.13.1
+
+**7.13.0**
+- expose SAML OAuth provider configuration
+- expose `OAUTH_AUTO_SIGN_IN_WITH_PROVIDER` configuration
+- gitlab: upgrade to CE v.7.13.0
+
+**7.12.2-2**
+- enable persistence `.secret` file used in 2FA
+
+**7.12.2-1**
+- fixed gitlab:backup:restore raketask
+
+**7.12.2**
+- gitlab: upgrade to CE v.7.12.2
+
+**7.12.1**
+- gitlab: upgrade to CE v.7.12.1
+
+**7.12.0**
+- added `SMTP_TLS` configuration parameter
+- gitlab: upgrade to CE v.7.12.0
+- added `OAUTH_AUTO_LINK_LDAP_USER` configuration parameter
+
+**7.11.4-1**
+- base image update to fix SSL vulnerability
+
+**7.11.4**
+- gitlab: upgrade to CE v.7.11.4
+
+**7.11.3**
+- gitlab: upgrade to CE v.7.11.3
+
+**7.11.2**
+- gitlab: upgrade to CE v.7.11.2
+
+**7.11.0**
+- init: added `SIDEKIQ_MEMORY_KILLER_MAX_RSS` configuration option
+- init: added `SIDEKIQ_SHUTDOWN_TIMEOUT` configuration option
+- gitlab-shell: upgrade to v.2.6.3
+- gitlab: upgrade to CE v.7.11.0
+- init: removed `GITLAB_PROJECTS_VISIBILITY` ENV parameter
+
+**7.10.4**
+- gitlab: upgrade to CE v.7.10.4
+
+**7.10.3**
+- gitlab: upgrade to CE v.7.10.3
+
+**7.10.2**
+- init: added support for remote AWS backups
+- gitlab: upgrade to CE v.7.10.2
+
+**7.10.1**
+- gitlab: upgrade to CE v.7.10.1
+
+**7.10.0**
+- gitlab-shell: upgrade to v.2.6.2
+- gitlab: upgrade to CE v.7.10.0
+- init: removed ENV variables to configure *External Issue Tracker* integration
+- init: added `GITLAB_EMAIL_REPLY_TO` configuration option
+- init: added `LDAP_BLOCK_AUTO_CREATED_USERS` configuration option
+
+**7.9.4**
+- gitlab: upgrade to CE v.7.9.4
+
+**7.9.3**
+- added `NGINX_PROXY_BUFFERING` option
+- added `NGINX_ACCEL_BUFFERING` option
+- added `GITLAB_GRAVATAR_ENABLED` option
+- added `GITLAB_GRAVATAR_HTTP_URL` option
+- added `GITLAB_GRAVATAR_HTTPS_URL` option
+- fixes: "transfer closed with xxx bytes remaining to read" error
+- gitlab: upgrade to CE v.7.9.3
+
+**7.9.2**
+- gitlab: upgrade to CE v.7.9.2
+
+**7.9.1**
+- init: set default value of `SMTP_OPENSSL_VERIFY_MODE` to `none`
+- gitlab: upgrade to CE v.7.9.1
+
+**7.9.0**
+- gitlab-shell: upgrade to v.2.6.0
+- gitlab: upgrade to CE v.7.9.0
+- init: set default value of `UNICORN_WORKERS` to `3`
+- init: set default value of `SMTP_OPENSSL_VERIFY_MODE` to `peer`
+- init: removed `GITLAB_RESTRICTED_VISIBILITY` configuration option, can be set from the UI
+- init: added BitBucket OAuth configuration support
+- init: added `GITLAB_EMAIL_DISPLAY_NAME` configuration option
+
+**7.8.4**
+- gitlab: upgrade to CE v.7.8.4
+
+**7.8.2**
+- gitlab: upgrade to CE v.7.8.2
+
+**7.8.1**
+- gitlab-shell: upgrade to v.2.5.4
+- gitlab: upgrade to CE v.7.8.1
+
 **7.8.0**
 - update postgresql client to the latest version, Closes #249
 - removed `GITLAB_SIGNUP` configuration option, can be set from gitlab ui
