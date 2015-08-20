@@ -1,5 +1,5 @@
 FROM sameersbn/ubuntu:14.04.20150816
-MAINTAINER sameer@damagehead.com
+MAINTAINER michaK@ivoltage.me
 
 ENV GITLAB_VERSION=7.13.5 \
     GITLAB_SHELL_VERSION=2.6.3 \

