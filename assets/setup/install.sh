@@ -50,7 +50,7 @@ echo "Cloning gitlab-ce v.${GITLAB_VERSION}..."
 #   https://github.com/gitlabhq/gitlabhq.git ${GITLAB_INSTALL_DIR}
 
 sudo -HEu ${GITLAB_USER} git clone -q \
-  https://github.com/michaKFromParis/gitlabhq.git ${GITLAB_INSTALL_DIR}
+  https://github.com/michaKFromParis/sparkslab.git ${GITLAB_INSTALL_DIR}
 
 cd ${GITLAB_INSTALL_DIR}
 
